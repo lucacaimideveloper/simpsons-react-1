@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Characters from "./compopnetns/Characters";
 
@@ -9,7 +9,7 @@ const App = () => {
 
   const getApiData = async () => {
     const results = await axios.get(
-      `https://thesimpsonsquoteapi.glitch.me/quotes?count=10`
+      `https://thesimpsonsquoteapi.glitch.me/quotes?count=8`
     );
 
     setCharacters(results.data); //set the api data
@@ -20,15 +20,15 @@ const App = () => {
   }, []); //run once for using the component
 
   const onDelete = (quote) => {
-    const index = characters.findIndex((characters) => {
-      return characters.quote === quote;
+    const index = characters.findIndex((character) => {
+      return character.quote === quote;
     });
 
     const _characters = [...characters];
 
     _characters.splice(index, 1);
 
-    setCharacters(characters);
+    setCharacters(_characters);
   };
 
   const onLikeToggle = (quote) => {
@@ -52,12 +52,17 @@ const App = () => {
   const onSort = (e) => {
     setSortOrder(e.target.value);
   };
+
+  //no data
+  if (!characters) return <p>Loading...</p>;
+
   //filter
-  const filtered = characters.filter((charcater) => {
-    return charcater.charcater
+  const filtered = characters.filter((character) => {
+    return character.character
       .toLowerCase()
       .includes(searchTerm ? searchTerm.toLowerCase() : "");
   });
+
   //calculate likes
   let total = 0;
   filtered.forEach((character) => {
@@ -80,14 +85,11 @@ const App = () => {
     });
   }
 
-  //no data
-  if (!characters) return <p>Loading...</p>;
-
   return (
     <>
       <div className="nav">
         <select>
-          {this.state.characters.map((name) => {
+          {characters.map((name) => {
             return <option key={name.quote}>{name.character}</option>;
           })}
         </select>
@@ -95,7 +97,7 @@ const App = () => {
         <label htmlFor="filter">Filter: </label>
         <input id="filter" type="text" onInput={onInput} />
         <h3>total likes ={total}</h3>
-        <lable htmlFor="sort">Sort</lable>
+        <label htmlFor="sort">Sort</label>
         <select id="sort" onChange={onSort}>
           <option value="asc">ASC</option>
           <option value="dsc">DSC</option>
@@ -105,7 +107,7 @@ const App = () => {
         characters={filtered}
         onLikeToggle={onLikeToggle}
         onDelete={onDelete}
-        getApiData={getApiData}
+        // getApiData={getApiData}
       />
     </>
   );

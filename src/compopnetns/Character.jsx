@@ -9,19 +9,19 @@ const Character = (props) => {
     name,
     quote,
     image,
-    onLiketToggle,
+    onLikeToggle,
     liked,
     characterDirection,
   } = props;
 
-  if (charcaterDirection === "left") {
+  if (characterDirection === "left") {
     return (
       <>
         <Name
           liked={liked}
           name={name}
           quote={quote}
-          onLikeToggle={onLiketToggle}
+          onLikeToggle={onLikeToggle}
           onDelete={onDelete}
         />
         <Image image={image} name={name} />
@@ -35,7 +35,7 @@ const Character = (props) => {
         liked={liked}
         name={name}
         quote={quote}
-        onLikeToggle={onLiketToggle}
+        onLikeToggle={onLikeToggle}
         onDelete={onDelete}
       />
       <Image image={image} name={name} />

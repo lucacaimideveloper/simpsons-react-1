@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 
-  const Quote = (props) => {
-    const { Quote  } = props 
-    return (<p>{quote}</p>);
-  }
+const Quote = (props) => {
+  const { quote } = props;
+  return <p>{quote}</p>;
+};
 
- 
-export default ;
+export default Quote;
