@@ -8,15 +8,17 @@ const Characters = (props) => {
   return characters.map((item) => {
     return (
       <div className="character" key={item.quote}>
-        <Character
-          liked={item.liked}
-          name={item.name}
-          quote={item.quote}
-          image={item.image}
-          characterDirection={item.characterDirection}
-          onLikeToggle={onLikeToggle}
-          onDelete={onDelete}
-        />
+        <div className="card">
+          <Character
+            liked={item.liked}
+            name={item.name}
+            quote={item.quote}
+            image={item.image}
+            characterDirection={item.characterDirection}
+            onLikeToggle={onLikeToggle}
+            onDelete={onDelete}
+          />
+        </div>
       </div>
     );
   });

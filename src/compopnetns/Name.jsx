@@ -6,13 +6,15 @@ const Name = (props) => {
     <div>
       <h1>{name}</h1>
       <button
-        style={{ backgroundColor: liked ? "red" : "blue" }}
+        style={{ backgroundColor: liked ? " #ffd90f" : " rgb(29, 144, 233)" }}
         onClick={() => {
           onLikeToggle(quote);
         }}>
-        LIKE/DISLIKE
+        Like!
       </button>
-      <button onClick={() => onDelete(quote)}>Delete</button>
+      <button className="buttonD" onClick={() => onDelete(quote)}>
+        Delete
+      </button>
     </div>
   );
 };

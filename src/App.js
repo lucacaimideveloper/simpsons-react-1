@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Characters from "./compopnetns/Characters";
-
+import "./App.css";
 const App = () => {
   const [characters, setCharacters] = useState();
   const [searchTerm, setSearchTerm] = useState();
@@ -88,27 +88,37 @@ const App = () => {
   return (
     <>
       <div className="nav">
-        <select>
+        {" "}
+        {/* <select>
           {characters.map((name) => {
             return <option key={name.quote}>{name.character}</option>;
           })}
-        </select>
-        <button onClick={getApiData}>Get new data</button>
-        <label htmlFor="filter">Filter: </label>
-        <input id="filter" type="text" onInput={onInput} />
-        <h3>total likes ={total}</h3>
-        <label htmlFor="sort">Sort</label>
-        <select id="sort" onChange={onSort}>
-          <option value="asc">ASC</option>
-          <option value="dsc">DSC</option>
-        </select>
+        </select> */}
+        <button className="newData" onClick={getApiData}>
+          Get new data
+        </button>
+        <div className="filter">
+          <label htmlFor="filter">Filter: </label>
+
+          <input className="label" id="filter" type="text" onInput={onInput} />
+        </div>
+        <h3 className="total">total likes ={total}</h3>
+        <div className="sort">
+          <label htmlFor="sort">Sort</label>
+          <select className="select" id="sort" onChange={onSort}>
+            <option value="asc">ASC</option>
+            <option value="dsc">DSC</option>
+          </select>
+        </div>
       </div>
-      <Characters
-        characters={filtered}
-        onLikeToggle={onLikeToggle}
-        onDelete={onDelete}
-        // getApiData={getApiData}
-      />
+      <div className="grid">
+        <Characters
+          characters={filtered}
+          onLikeToggle={onLikeToggle}
+          onDelete={onDelete}
+          // getApiData={getApiData}
+        />
+      </div>
     </>
   );
 };
