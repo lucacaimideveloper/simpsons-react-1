@@ -2,7 +2,6 @@ import React from "react";
 import Character from "./Character";
 
 const Characters = (props) => {
-  console.log("hi 2", props);
   const { characters, onLikeToggle, onDelete } = props;
 
   return characters.map((item) => {
@@ -11,7 +10,7 @@ const Characters = (props) => {
         <div className="card">
           <Character
             liked={item.liked}
-            name={item.name}
+            name={item.character}
             quote={item.quote}
             image={item.image}
             characterDirection={item.characterDirection}

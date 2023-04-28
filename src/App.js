@@ -86,7 +86,10 @@ const App = () => {
   }
 
   return (
-    <>
+    <body>
+      <div className="container">
+        <h1 className="title">Simpson characters app!</h1>
+      </div>
       <div className="nav">
         {" "}
         {/* <select>
@@ -119,9 +122,8 @@ const App = () => {
           // getApiData={getApiData}
         />
       </div>
-    </>
+    </body>
   );
 };
 
 export default App;
-//hello
